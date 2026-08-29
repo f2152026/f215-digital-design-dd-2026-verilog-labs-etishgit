@@ -17,6 +17,8 @@
 // gates are rarely symmetric this way. Re-simulate with the SAME
 // ripple_adder.v and tb.v; nothing else needs to change.
 
+// FA_Gate.v -- Part (a): one constant delay per gate
+// FA_Gate.v -- Part (b): rise/fall delay pair per gate  #(rise, fall)
 module FA_Gate(
   input  a,
   input  b,
@@ -25,11 +27,9 @@ module FA_Gate(
   output cout
 );
   wire ps, pc1, pc2;
-
-  xor (ps,  a,   b);
-  and (pc1, a,   b);
-  xor (sum, cin, ps);
-  and (pc2, cin, ps);
-  or  (cout, pc1, pc2);
-
+  xor #(2,3) (ps,   a,   b);
+  and #(1,2) (pc1,  a,   b);
+  xor #(2,3) (sum,  cin, ps);
+  and #(1,2) (pc2,  cin, ps);
+  or  #(1,2) (cout, pc1, pc2);
 endmodule

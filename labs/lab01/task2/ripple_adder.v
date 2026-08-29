@@ -12,16 +12,19 @@
 //
 // Use named port connections (.a(...), .b(...), etc.), not positional.
 
-module ripple_adder(
-  input  [3:0] a,
-  input  [3:0] b,
-  input        cin,
-  output [3:0] sum,
-  output       cout
+// FA_Gate.v -- Part (b): rise/fall delay pair per gate  #(rise, fall)
+// FA_Gate.v -- Part (b): rise/fall delay pair per gate  #(rise, fall)
+module FA_Gate(
+  input  a,
+  input  b,
+  input  cin,
+  output sum,
+  output cout
 );
-
-  wire c1, c2, c3;
-
-  // TODO: your four FA_Gate instances go here.
-
+  wire ps, pc1, pc2;
+  xor #(2,3) (ps,   a,   b);
+  and #(1,2) (pc1,  a,   b);
+  xor #(2,3) (sum,  cin, ps);
+  and #(1,2) (pc2,  cin, ps);
+  or  #(1,2) (cout, pc1, pc2);
 endmodule
