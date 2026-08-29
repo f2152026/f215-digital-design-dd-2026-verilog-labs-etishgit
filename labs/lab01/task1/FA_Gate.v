@@ -7,6 +7,8 @@
 //           instantiations below into any different sequence, then
 //           re-simulate with the same tb.v and compare.
 
+// FA_Gate.v -- Part (a): original gate ordering
+// FA_Gate.v -- Part (b): same five gates, reversed instantiation order
 module FA_Gate(
   input  a,
   input  b,
@@ -15,12 +17,9 @@ module FA_Gate(
   output cout
 );
   wire ps, pc1, pc2;
-
-  xor (ps,  a,   b);
-  and (pc1, a,   b);
   or  (cout, pc1, pc2);
-  xor (sum, cin, ps);
   and (pc2, cin, ps);
-
-  
+  xor (sum, cin, ps);
+  and (pc1, a,   b);
+  xor (ps,  a,   b);
 endmodule
