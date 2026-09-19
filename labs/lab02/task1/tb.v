@@ -8,10 +8,11 @@ module tb;
 
   // TODO: declare the three DUT inputs as the appropriate variable type.
   // Use exactly these names: t_i0, t_i1, t_s (needed by $monitor below).
-  reg   ________________________;
+  DUT U1 (.I0(t_i0), .I1(t_i1), .S(t_s), .Y(t_y));
+  reg   t_i0, t_i1, t_s;
   // TODO: declare the DUT output as the appropriate net type.
   // Use exactly this name: t_y (needed by $monitor below).
-  wire  ________________________;
+  wire  t_y;
 
   // TODO: instantiate DUT here, connecting t_i0, t_i1, t_s, t_y to its ports
 
