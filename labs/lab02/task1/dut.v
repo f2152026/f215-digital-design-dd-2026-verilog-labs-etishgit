@@ -11,7 +11,7 @@ module DUT (
 );
 
     // ---- Option 1: dataflow version ----
-    //mux_df U1 (
+    mux_df U1 (
         .I0 (I0),
         .I1 (I1),
         .S  (S),
@@ -19,10 +19,10 @@ module DUT (
     );
 
     // ---- Option 2: behavioral version ----
-     mux_beh U2 (
-        .I0 (I0),
-        .I1 (I1),
-        .S  (S),
+    // mux_beh U2 (
+      //  .I0 (I0),
+      //  .I1 (I1),
+      //  .S  (S),
     //     .Y  (Y)
     // );
 
